@@ -1,4 +1,4 @@
-_.start({"packageName":"vb-ref", "version":"2", "url":"https://raw.githubusercontent.com/m-ood/vb-ref/main/vb-ref.as", "passwordProtected":"0"})
+_.start({"packageName":"vb-ref", "version":"3", "url":"https://raw.githubusercontent.com/m-ood/vb-ref/main/vb-ref.as", "passwordProtected":"0"})
 global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb"})
 ;#if ((!winactive("ahk_exe code.exe")))
 {
@@ -18,13 +18,14 @@ global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1
         ,":":"+;"
         ,"!":"+1"
         ,"@":"+2"
-        ,"$":"+3"
-        ,"%":"+4"
-        ,"^":"+5"
-        ,"&":"+6"
-        ,"*":"+7"
-        ,"(":"+8"
-        ,")":"+9"}
+        ,"#":"+3"
+        ,"$":"+4"
+        ,"%":"+5"
+        ,"^":"+6"
+        ,"&":"+7"
+        ,"*":"+8"
+        ,"(":"+9"
+        ,")":"+0"}
     loop, % (tempBindList.count()/2) {
         tKey:=tempBindList[i++],tVal:="/:" . tempBindList[i++],each:=_.mfilter(tval,"/\s/is=_","/^./is")
         for a,b in each {

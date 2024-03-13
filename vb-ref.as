@@ -5,7 +5,7 @@
 
 	],
 	"source": "https://raw.githubusercontent.com/m-ood/vb-ref/main/packages/vb-ref_ahk.zip",
-	"version": "2",
+	"version": "3",
 	"webhook": [
 
 	]
