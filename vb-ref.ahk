@@ -1,4 +1,4 @@
-_.start({"packageName":"vb-ref", "version":"3", "url":"https://raw.githubusercontent.com/m-ood/vb-ref/main/vb-ref.as", "passwordProtected":"0"})
+_.start({"packageName":"vb-ref", "version":"4", "url":"https://raw.githubusercontent.com/m-ood/vb-ref/main/vb-ref.as", "passwordProtected":"0"})
 global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb"})
 ;#if ((!winactive("ahk_exe code.exe")))
 {
@@ -6,6 +6,7 @@ global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1
      sens:=$.1_sens ;? input the value for sens here
      #if ((!winactive("ahk_exe code.exe")) && (winactive("ahk_exe robloxplayerbeta.exe")))
      htmp:=720/sens,_.data.hSens:=ceil(htmp)+(((htmp*100000000)&1=0)?(0):(1)),vtmp:=416/sens,_.data.vSens:=ceil(vtmp)+(((vtmp*100000000)&1=0)?(0):(1))
+     _.group.windows("!ahk_exe code.exe && ahk_exe robloxplayerbeta.exe"),_.data.turnAround:=round(_.data.hsens*0.5),_.data.turn:=_.data.turnAround/2
      _.data.nturn:=-(_.data.turnAround/2),_.data.downpx:=round(_.data.vsens*0.5515), _.data.uppx:=round(_.data.vsens*-0.30639) ;$rblxsf
      _.data["chatSwitch"]:=0, _.data["shiftSwitch"]:=0, groups:=["_.keybind.macro(,""/"",""open"")`nopen() {`n_.data[""chatSwitch""]:=1`nreturn`n}"
       , "_.keybind.macro(,""esc"",""close"")`nclose() {`n_.data[""chatSwitch""]:=0`nreturn`n}","_.keybind.macro(,""enter"",""close"")`nclose() {`n"
@@ -39,7 +40,7 @@ global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1
         group:="list:=" . b.jp . "`n_.keybind.macro(""$~"",""" . a . """,""main"",list)`nreturn`nmain(list) {`nif (_.data.chatSwitch=1)`nretur"
          . "n`n@:=_.anchor`nfor a,b in list {`n_.send(b)`n@.when(""+10"")`n_.send(b . ""@"")`n@.when(""+10"")`n}`n_.send(""enter"")`n@.when("""
          . "+10"")`n_.send(""enter@"")`n@.when(""+10"")`n_.wait()`nreturn`n}"
-        _.print(group)
+        ;_.print(group)
         _.group.add(group)
         i++
     }
@@ -2998,5 +2999,5 @@ main() {
 
 /*;$30bf435d-89c8-4801-b275-62b3ab316f0c3e7f6d01dc4ec3293308c671b2489ad4
 ;---{"data": {"params": {"1_sens": "0.05099", "2_ref": "f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb, f7:cteam 1024 funky!"}}, 
-;---"ID": "6b5d2db9-11f3-4c31-8a65-367be7647ff9", "TIME": "20240312215930471"}
+;---"ID": "6b5d2db9-11f3-4c31-8a65-367be7647ff9", "TIME": "20240313001253004"}
 */
