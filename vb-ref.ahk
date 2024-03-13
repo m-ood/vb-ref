@@ -1,4 +1,4 @@
-_.start({"packageName":"vb-ref", "version":"1", "url":"https://raw.githubusercontent.com/m-ood/vb-ref/main/vb-ref.as", "passwordProtected":"0"})
+_.start({"packageName":"vb-ref", "version":"2", "url":"https://raw.githubusercontent.com/m-ood/vb-ref/main/vb-ref.as", "passwordProtected":"0"})
 global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb"})
 ;#if ((!winactive("ahk_exe code.exe")))
 {
@@ -16,7 +16,15 @@ global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1
     ;_.print(tempBindList)
     chatDict:={"_":"space"
         ,":":"+;"
-        ,"!":"+1"}
+        ,"!":"+1"
+        ,"@":"+2"
+        ,"$":"+3"
+        ,"%":"+4"
+        ,"^":"+5"
+        ,"&":"+6"
+        ,"*":"+7"
+        ,"(":"+8"
+        ,")":"+9"}
     loop, % (tempBindList.count()/2) {
         tKey:=tempBindList[i++],tVal:="/:" . tempBindList[i++],each:=_.mfilter(tval,"/\s/is=_","/^./is")
         for a,b in each {
@@ -25,12 +33,12 @@ global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1
                 each[a]:=chatDict[b]
         } bindList[tKey]:=each
     } i:=1
-    ;_.print(bindList)
+    _.print(bindList)
     for a,b in bindList {
         group:="list:=" . b.jp . "`n_.keybind.macro(""$~"",""" . a . """,""main"",list)`nreturn`nmain(list) {`nif (_.data.chatSwitch=1)`nretur"
          . "n`n@:=_.anchor`nfor a,b in list {`n_.send(b)`n@.when(""+10"")`n_.send(b . ""@"")`n@.when(""+10"")`n}`n_.send(""enter"")`n@.when("""
          . "+10"")`n_.send(""enter@"")`n@.when(""+10"")`n_.wait()`nreturn`n}"
-        ;_.print(group)
+        _.print(group)
         _.group.add(group)
         i++
     }
@@ -624,11 +632,10 @@ main() {
                                             regexmatch(_string,b.options . ")" . b.pattern,temp)
                                             _string:=regexreplace(_string,"isO)^.{" . pos . "}\K.{" . length . "}(?=.*$)","")
                                         } case "1": _string:=regexreplace(_string,b.options . ")" . b.pattern,b.replace),temp:=_string
-                                }} if (_string==lastString)
+                                }} if ("" . _string=="" . lastString)
                                     break
                                 final.push(temp)
-                                ;_.print(_string)
-                            } until ((_string=="")||(replaceBreak=1))
+                            } until ((_string="")||(replaceBreak=1))
                             return final
                         }
                     } ;!JANK: all front facing slashes inside regex pattern require escaping (this is due to the convienence of compactness)
@@ -2989,6 +2996,6 @@ main() {
 ;]/mhk
 
 /*;$30bf435d-89c8-4801-b275-62b3ab316f0c3e7f6d01dc4ec3293308c671b2489ad4
-;---{"data": {"params": {"1_sens": "0.05099", "2_ref": "f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb"}}, "ID": "6b5d2db9-11f3-4
-;---c31-8a65-367be7647ff9", "TIME": "20240312210928009"}
+;---{"data": {"params": {"1_sens": "0.05099", "2_ref": "f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb, f7:cteam 1024 funky!"}}, 
+;---"ID": "6b5d2db9-11f3-4c31-8a65-367be7647ff9", "TIME": "20240312215930471"}
 */
