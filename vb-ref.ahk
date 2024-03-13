@@ -10,6 +10,7 @@ global $:=_.params({"1_sens":"0.05099","2_ref":"f1:a1, f2:a2, f3:a1 -1, f4:a2 -1
      _.data["chatSwitch"]:=0, _.data["shiftSwitch"]:=0, groups:=["_.keybind.macro(,""/"",""open"")`nopen() {`n_.data[""chatSwitch""]:=1`nreturn`n}"
       , "_.keybind.macro(,""esc"",""close"")`nclose() {`n_.data[""chatSwitch""]:=0`nreturn`n}","_.keybind.macro(,""enter"",""close"")`nclose() {`n"
       . "_.data[""chatSwitch""]:=0`nreturn`n}","_.keybind.macro(,""Lbutton"",""close"")`nclose() {`n_.data[""chatSwitch""]:=0`nreturn`n}"] ;$rblxcc
+    _.group.add(groups*)
     
     tempBindList:=strsplit(_.filter($.2_ref,"/\:?(?<!\\)\,\s*/is=:"),":"), i:=1, bindList:={}
     ;_.print(tempBindList)
@@ -2989,5 +2990,5 @@ main() {
 
 /*;$30bf435d-89c8-4801-b275-62b3ab316f0c3e7f6d01dc4ec3293308c671b2489ad4
 ;---{"data": {"params": {"1_sens": "0.05099", "2_ref": "f1:a1, f2:a2, f3:a1 -1, f4:a2 -1, f5:autoset, f6:cb"}}, "ID": "6b5d2db9-11f3-4
-;---c31-8a65-367be7647ff9", "TIME": "20240312205714509"}
+;---c31-8a65-367be7647ff9", "TIME": "20240312210928009"}
 */
